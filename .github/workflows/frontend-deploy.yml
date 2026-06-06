@@ -10,6 +10,9 @@ on:
 env: 
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+
+permissions:
+  contents: write 
   
 jobs:
   deploy:
@@ -30,7 +33,7 @@ jobs:
         run: cd frontend && npm run build
 
       - name: Deploy to Github Pages
-        uses: peaceiris/actions-gh-pages@v6
+        uses: peaceiris/actions-gh-pages@v4.1.0
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/build
